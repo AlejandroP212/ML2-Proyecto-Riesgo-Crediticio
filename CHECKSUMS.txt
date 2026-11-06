@@ -1,0 +1,16 @@
+# Archivos originales: SHA-256 y fecha de modificación local (zona -05:00)
+# Verificar: sha256sum -c <(grep -v '^#' CHECKSUMS.txt | cut -d'|' -f1)
+741a04229a44540d4fd1afff978833def4f3bf27635945d5c16e78add88472be  articulo/Koshti_2025_Improving_Credit_Score_Classification.pdf | 2026-10-01 18:04:49
+713713ce698029b5c6a18ad6892d6d59ffb6e4e3b604ced90692c23318628cdc  entregas/entrega_1/Entrega1_Castro_Pardo.docx | 2026-10-01 12:41:19
+bacfb74cb210fa1581267b83be0f4dac756f57c7aecdbda8bb795b3224868e27  entregas/entrega_2/Entrega2_Proyecto_ML2.pdf | 2026-10-02 20:49:22
+59ab694c48a96c7979508acbca426a90066cbbfbf1e4928a1eb23d7c128a9347  entregas/entrega_2/datasets/credito_colombia_simulado.csv | 2026-10-02 09:19:50
+1efb58a82d55b547b7c70ac665196c1128912364fc7d809b8dc06592cb1c8c67  entregas/entrega_2/figuras/fig1_diagnostico_datos.png | 2026-10-02 09:44:24
+987783bdfcdb9dd0be42eb0512fa220e876e575b8b95d5213efaf7575b1f6ce0  entregas/entrega_2/figuras/fig1_distribucion_ingresos.png | 2026-10-02 11:22:21
+ab760d0fad55546cdfc9fa14ab50db17ec063a419b45a5c4d487ea3d499d0794  entregas/entrega_2/figuras/fig2_diagnostico_nulos_desbalance.png | 2026-10-02 11:22:22
+ef605b004f7ab10680b923ed90e6d8318a7858e7b519201c259083ff4879d3b5  entregas/entrega_2/figuras/fig2_matriz_confusion_rf.png | 2026-10-02 09:44:25
+8669df974a25c103955a9f020be98445358ee6c02e913c9dcb4e5373a0fdafcd  entregas/entrega_2/figuras/fig3_curvas_roc_comparativas.png | 2026-10-02 11:22:27
+3d5d99c5367929615446b0be3f82c68b34c81211c79bda4a552fe600884f546d  entregas/entrega_2/figuras/fig3_importancia_variables.png | 2026-10-02 09:44:25
+1455b808d0d148d18407bfccabb0979b203335bb282a00d8f13bc6551905be69  entregas/entrega_2/figuras/fig4_matriz_confusion_rf.png | 2026-10-02 11:22:28
+76781573a74fdf57889ee1eeebe71051fb7368cc4242701c55a6b7b8ed716505  entregas/entrega_2/figuras/fig5_importancia_variables.png | 2026-10-02 11:22:29
+c6f1e3fe0ff89761dddbf92692bb29717d01402c4b3e9ca1f13d267634ef5329  entregas/entrega_2/generar_datos_simulados.py | 2026-10-02 09:19:38
+9d1a84829a55dbbf94a5946742f0079ea51b51545c03f2bc3a026bcd7719f465  entregas/entrega_2/notebooks/01_modelamiento_segunda_entrega.ipynb | 2026-10-02 09:28:04
