@@ -1,0 +1,12 @@
+Característica,Valor teórico,Valor simulado
+Tasa de informalidad,54.5 % (DANE),56.45%
+Tasa de incumplimiento,8.5 %,8.50%
+Mediana ingreso informal (SMMLV),≈ e^0.55 = 1.73,1.75
+Mediana ingreso formal (SMMLV),≈ e^1.10 = 3.00,3.05
+Media antigüedad informal (años),2.0,2.04
+Media antigüedad formal (años),5.5,5.71
+Media score informal,585,586
+Media score formal,675,675
+Media moras previas informal,0.75,0.75
+Media moras previas formal,0.25,0.26
+Mediana monto crédito (SMMLV),≈ e^1.4 = 4.06,4.02
