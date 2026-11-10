@@ -28,7 +28,8 @@ pip install -r requirements.txt
 jupyter lab notebooks/
 ```
 
-Todo usa la semilla `42`. Las figuras se guardan en `figuras/` y las tablas en `resultados/`.
+Todo usa la semilla `42`. Las figuras se guardan en `figuras/` y las tablas en `resultados/`. Los notebooks 01 y 02
+tardan menos de un minuto; el 03 tarda unos 7 minutos por la validación cruzada anidada de los cuatro modelos.
 
 ## Estructura
 
@@ -50,13 +51,15 @@ Todo usa la semilla `42`. Las figuras se guardan en `figuras/` y las tablas en `
   la etiqueta [`entrega-2`](../../tree/entrega-2), y no se han modificado desde entonces.
 - `CHECKSUMS.txt` registra el hash SHA-256 y la fecha de modificación local de cada original. GitHub no conserva las fechas
   de los archivos, así que para comprobar que un archivo es idéntico al original se compara su hash:
-  `sha256sum -c <(grep -v '^#' CHECKSUMS.txt | cut -d'|' -f1)`.
-- Los notebooks de `notebooks/` se crearon en **noviembre de 2026** para que cada cifra y figura del informe tenga código
+  `sha256sum -c <(grep -v '^#' CHECKSUMS.txt | cut -d'|' -f1 | sed 's/ *$//')`.
+- Los notebooks 01 y 02 se crearon en **noviembre de 2026** para que cada cifra y figura del informe tenga código
   que la genere. Respecto al notebook original agregan:
   - las curvas ROC y el guardado (`savefig`) de todas las figuras;
   - la desviación estándar de la validación cruzada del RF optimizado;
   - la validación cruzada anidada;
   - una tabla que compara cada cifra con la del informe. Las diferencias encontradas se explican al final del notebook 02.
+- El notebook 03 y los módulos de `src/` se agregaron después de la retroalimentación de la Segunda entrega
+  (ver la sección siguiente). Cada cambio está en su propio commit.
 
 ## Cambios después de la retroalimentación de la Segunda entrega
 
@@ -78,5 +81,6 @@ Todo usa la semilla `42`. Las figuras se guardan en `figuras/` y las tablas en `
 
 ## Uso de IA generativa
 
-Se usó Claude (Anthropic) como apoyo para organizar el repositorio y redactar los notebooks de reproducibilidad.
+Se usó Claude (Anthropic) como apoyo para organizar el repositorio, redactar los notebooks de reproducibilidad y
+preparar los cambios posteriores a la retroalimentación.
 El equipo revisó y puede sustentar cada decisión técnica.
