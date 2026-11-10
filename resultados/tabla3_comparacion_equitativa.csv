@@ -1,0 +1,6 @@
+Modelo,CV anidada Bal. Acc (media),CV anidada Bal. Acc (desv),Test Bal. Acc,Test Recall,Test Precision,Test F1,Test ROC-AUC,Morosos detectados,Falsas alarmas
+Baseline (Mayoría),,,0.5,0.0,0.0,0.0,0.5,0 de 102,0
+Árbol de Decisión,0.8572,0.0155,0.8573,0.8529,0.364,0.5103,0.8747,87 de 102,152
+Random Forest,0.8909,0.0109,0.8659,0.8529,0.3955,0.5404,0.9434,87 de 102,133
+AdaBoost,0.8797,0.0154,0.8705,0.8529,0.4143,0.5577,0.9502,87 de 102,123
+Gradient Boosting,0.8878,0.0066,0.889,0.902,0.4035,0.5576,0.9541,92 de 102,136

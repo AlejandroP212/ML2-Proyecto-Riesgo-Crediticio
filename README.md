@@ -13,6 +13,7 @@ calibrada con la informalidad laboral del DANE (≈54,5 %) y una tasa de mora de
 |---|---|---|
 | `notebooks/01_simulacion_y_verificacion.ipynb` | Construye la simulación paso a paso (código completo y justificación de cada distribución y parámetro), verifica que el dataset sea idéntico al de la entrega y que reproduzca la estructura prevista (7.1). Figuras 1–2 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/01_simulacion_y_verificacion.ipynb) |
 | `notebooks/02_modelamiento_y_validacion.ipynb` | Pipeline sin fuga, comparación de modelos supervisados, GridSearch, CV anidada y comparación con el informe (7.2–7.4). Figuras 3–5 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/02_modelamiento_y_validacion.ipynb) |
+| `notebooks/03_comparacion_equitativa.ipynb` | Compara todos los modelos supervisados en igualdad de condiciones: pesos de clase, GridSearch y CV anidada para cada uno, importancia por permutación y errores por segmento (7.3–7.4). Figuras 6–7 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/03_comparacion_equitativa.ipynb) |
 
 En Colab basta con *Entorno de ejecución → Ejecutar todas*: el notebook clona el repositorio por sí solo.
 
@@ -36,7 +37,7 @@ Todo usa la semilla `42`. Las figuras se guardan en `figuras/` y las tablas en `
 ├── entregas/                  ARCHIVOS ORIGINALES, sin modificar
 │   ├── entrega_1/             Informe de la Primera entrega (.docx)
 │   └── entrega_2/             Informe PDF, notebook, generador, dataset y figuras de la Segunda entrega
-├── src/                       Código documentado de la simulación (simulacion_credito.py)
+├── src/                       simulacion_credito.py (simulación documentada) y modelos_balanceados.py
 ├── notebooks/                 Notebooks reproducibles (creados después de la entrega, ver abajo)
 ├── data/                      Dataset regenerado por el notebook 01
 ├── figuras/  resultados/      Salidas de los notebooks
@@ -68,6 +69,12 @@ Todo usa la semilla `42`. Las figuras se guardan en `figuras/` y las tablas en `
    y de `resultados/tabla2_comparativa_modelos.csv`. Su fila del informe no tenía código asociado.
    El notebook 02 también señala que las importancias citadas en el texto del informe (sección 4.3) no coinciden con su
    Figura 5 ni con el código.
+3. **Comparación en igualdad de condiciones (notebook 03).** En la entrega solo Random Forest tuvo pesos de clase y
+   ajuste de hiperparámetros. Ahora los cuatro modelos supervisados tienen pesos balanceados (AdaBoost y Gradient Boosting
+   mediante `src/modelos_balanceados.py`), su propio GridSearch y CV anidada con los mismos pliegues. Resultado: Random
+   Forest (0,891 ± 0,011), Gradient Boosting (0,888 ± 0,007) y AdaBoost (0,880 ± 0,015) quedan parejos; el árbol queda por
+   debajo (0,857 ± 0,016). La ventaja de Random Forest en la entrega se debía sobre todo al tratamiento del desbalance.
+   Resultados en `resultados/tabla3_comparacion_equitativa.csv` y `resultados/importancia_permutacion.csv`.
 
 ## Uso de IA generativa
 

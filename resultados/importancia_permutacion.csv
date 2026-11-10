@@ -1,0 +1,11 @@
+,media,desv
+plazo_meses,-0.0006,0.0027
+edad,0.0021,0.0023
+monto_credito_smmlv,0.0037,0.0068
+creditos_activos,0.004,0.0036
+ingreso_smmlv,0.0229,0.0116
+antiguedad_laboral,0.0382,0.0132
+relacion_cuota_ingreso,0.052,0.0135
+es_informal,0.1611,0.0254
+moras_previas,0.1619,0.0188
+score_crediticio,0.1779,0.0202
