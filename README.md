@@ -12,7 +12,7 @@ calibrada con la informalidad laboral del DANE (≈54,5 %) y una tasa de mora de
 | Notebook | Contenido | Colab |
 |---|---|---|
 | `notebooks/01_simulacion_y_verificacion.ipynb` | Construye la simulación paso a paso (código completo y justificación de cada distribución y parámetro), verifica que el dataset sea idéntico al de la entrega y que reproduzca la estructura prevista (7.1). Figuras 1–2 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/01_simulacion_y_verificacion.ipynb) |
-| `notebooks/02_modelamiento_y_validacion.ipynb` | Pipeline sin fuga, comparación de modelos, GMM, GridSearch, CV anidada y comparación con el informe (7.2–7.4). Figuras 3–5 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/02_modelamiento_y_validacion.ipynb) |
+| `notebooks/02_modelamiento_y_validacion.ipynb` | Pipeline sin fuga, comparación de modelos supervisados, GridSearch, CV anidada y comparación con el informe (7.2–7.4). Figuras 3–5 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/02_modelamiento_y_validacion.ipynb) |
 
 En Colab basta con *Entorno de ejecución → Ejecutar todas*: el notebook clona el repositorio por sí solo.
 
@@ -52,7 +52,6 @@ Todo usa la semilla `42`. Las figuras se guardan en `figuras/` y las tablas en `
   `sha256sum -c <(grep -v '^#' CHECKSUMS.txt | cut -d'|' -f1)`.
 - Los notebooks de `notebooks/` se crearon en **noviembre de 2026** para que cada cifra y figura del informe tenga código
   que la genere. Respecto al notebook original agregan:
-  - la fila *GMM Detección de Anomalías* de la Tabla 2, que no tenía código asociado;
   - las curvas ROC y el guardado (`savefig`) de todas las figuras;
   - la desviación estándar de la validación cruzada del RF optimizado;
   - la validación cruzada anidada;
@@ -64,6 +63,11 @@ Todo usa la semilla `42`. Las figuras se guardan en `figuras/` y las tablas en `
    por variable, con la distribución, los parámetros, el fundamento de cada uno y la lectura de los coeficientes del logit.
    El mismo código queda en `src/simulacion_credito.py`. Ambos producen un archivo idéntico (mismo SHA-256) al dataset
    entregado. Se documenta además una limitación de la simulación: la mora del segmento formal es casi nula.
+2. **Se retira el GMM de la comparación.** El detector de anomalías no supervisado no usa la etiqueta de mora, así que
+   compararlo con clasificadores supervisados no es una comparación en igualdad de condiciones; se eliminó del notebook 02
+   y de `resultados/tabla2_comparativa_modelos.csv`. Su fila del informe no tenía código asociado.
+   El notebook 02 también señala que las importancias citadas en el texto del informe (sección 4.3) no coinciden con su
+   Figura 5 ni con el código.
 
 ## Uso de IA generativa
 
