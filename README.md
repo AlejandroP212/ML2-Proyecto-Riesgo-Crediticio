@@ -80,10 +80,15 @@ unos 5 minutos.
    Forest (0,891 ± 0,011), Gradient Boosting (0,888 ± 0,007) y AdaBoost (0,880 ± 0,015) quedan parejos; el árbol queda por
    debajo (0,857 ± 0,016). La ventaja de Random Forest en la entrega se debía sobre todo al tratamiento del desbalance.
    Resultados en `resultados/tabla3_comparacion_equitativa.csv` y `resultados/importancia_permutacion.csv`.
-4. **Búsqueda de hiperparámetros con los métodos del curso (notebook 04).** Siguiendo la sesión de búsqueda de
-   hiperparámetros (semana 5), se comparan `GridSearchCV`, `RandomizedSearchCV` y Optuna (TPE) con el mismo presupuesto
-   (24 y 27 configuraciones), el mismo espacio y los mismos pliegues. Las diferencias entre buscadores (≤ 0,004) son menores
-   que la desviación entre pliegues y los tres llegan a la misma región de hiperparámetros, lo que confirma el ajuste.
+4. **Búsqueda de hiperparámetros con los métodos del curso (notebook 04).** No busca cambiar los hiperparámetros, sino
+   **comprobar que la rejilla estaba bien armada**. `GridSearchCV` solo prueba los valores que uno elige (por ejemplo,
+   profundidades 6, 8 y 12): si el mejor valor estuviera entre esos puntos, la rejilla no lo encontraría.
+   `RandomizedSearchCV` y Optuna (TPE), vistos en la semana 5, exploran todo el rango, y Optuna además aprende de los
+   intentos anteriores. Se comparan los tres con el mismo presupuesto (24 y 27 configuraciones), el mismo espacio y los
+   mismos pliegues. Las diferencias entre buscadores (≤ 0,004) son menores que la desviación entre pliegues y los tres
+   llegan a la misma región de hiperparámetros: **los hiperparámetros elegidos no dependen de cómo se armó la rejilla**.
+   Optuna queda listo para la entrega final, donde modelos con más hiperparámetros (XGBoost, LightGBM) harían inviable
+   una rejilla completa.
    Resultados en `resultados/tabla4_buscadores_hiperparametros.csv`. Se agrega `optuna` a `requirements.txt`.
 
 ## Uso de IA generativa
