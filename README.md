@@ -11,10 +11,14 @@ calibrada con la informalidad laboral del DANE (≈54,5 %) y una tasa de mora de
 
 | Notebook | Contenido | Colab |
 |---|---|---|
-| `notebooks/01_simulacion_y_verificacion.ipynb` | Genera el dataset, verifica que sea idéntico al de la entrega y que reproduzca la estructura simulada (7.1). Figuras 1–2 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/01_simulacion_y_verificacion.ipynb) |
+| `notebooks/01_simulacion_y_verificacion.ipynb` | Construye la simulación paso a paso (código completo y justificación de cada distribución y parámetro), verifica que el dataset sea idéntico al de la entrega y que reproduzca la estructura prevista (7.1). Figuras 1–2 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/01_simulacion_y_verificacion.ipynb) |
 | `notebooks/02_modelamiento_y_validacion.ipynb` | Pipeline sin fuga, comparación de modelos, GMM, GridSearch, CV anidada y comparación con el informe (7.2–7.4). Figuras 3–5 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/02_modelamiento_y_validacion.ipynb) |
 
 En Colab basta con *Entorno de ejecución → Ejecutar todas*: el notebook clona el repositorio por sí solo.
+
+El código de la simulación también está como módulo en `src/simulacion_credito.py`; `python src/simulacion_credito.py`
+regenera `data/credito_colombia_simulado.csv` sin abrir notebooks.
+
 En local:
 
 ```bash
@@ -32,6 +36,7 @@ Todo usa la semilla `42`. Las figuras se guardan en `figuras/` y las tablas en `
 ├── entregas/                  ARCHIVOS ORIGINALES, sin modificar
 │   ├── entrega_1/             Informe de la Primera entrega (.docx)
 │   └── entrega_2/             Informe PDF, notebook, generador, dataset y figuras de la Segunda entrega
+├── src/                       Código documentado de la simulación (simulacion_credito.py)
 ├── notebooks/                 Notebooks reproducibles (creados después de la entrega, ver abajo)
 ├── data/                      Dataset regenerado por el notebook 01
 ├── figuras/  resultados/      Salidas de los notebooks
@@ -52,6 +57,13 @@ Todo usa la semilla `42`. Las figuras se guardan en `figuras/` y las tablas en `
   - la desviación estándar de la validación cruzada del RF optimizado;
   - la validación cruzada anidada;
   - una tabla que compara cada cifra con la del informe. Las diferencias encontradas se explican al final del notebook 02.
+
+## Cambios después de la retroalimentación de la Segunda entrega
+
+1. **Código de la simulación visible.** El notebook 01 ya no importa el generador: muestra el código completo, variable
+   por variable, con la distribución, los parámetros, el fundamento de cada uno y la lectura de los coeficientes del logit.
+   El mismo código queda en `src/simulacion_credito.py`. Ambos producen un archivo idéntico (mismo SHA-256) al dataset
+   entregado. Se documenta además una limitación de la simulación: la mora del segmento formal es casi nula.
 
 ## Uso de IA generativa
 
