@@ -1,0 +1,7 @@
+Modelo,Buscador,Configuraciones,CV media,CV desv,Diferencia con el mejor
+Random Forest,Grid,24,0.8842,0.0257,0.0
+Random Forest,Random,24,0.8802,0.0282,-0.004
+Random Forest,Optuna (TPE),24,0.8827,0.0255,-0.0015
+Gradient Boosting,Grid,27,0.8939,0.0082,-0.0022
+Gradient Boosting,Random,27,0.8921,0.0078,-0.004
+Gradient Boosting,Optuna (TPE),27,0.896,0.0099,0.0

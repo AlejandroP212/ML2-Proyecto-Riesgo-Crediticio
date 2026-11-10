@@ -14,6 +14,7 @@ calibrada con la informalidad laboral del DANE (≈54,5 %) y una tasa de mora de
 | `notebooks/01_simulacion_y_verificacion.ipynb` | Construye la simulación paso a paso (código completo y justificación de cada distribución y parámetro), verifica que el dataset sea idéntico al de la entrega y que reproduzca la estructura prevista (7.1). Figuras 1–2 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/01_simulacion_y_verificacion.ipynb) |
 | `notebooks/02_modelamiento_y_validacion.ipynb` | Pipeline sin fuga, comparación de modelos supervisados, GridSearch, CV anidada y comparación con el informe (7.2–7.4). Figuras 3–5 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/02_modelamiento_y_validacion.ipynb) |
 | `notebooks/03_comparacion_equitativa.ipynb` | Compara todos los modelos supervisados en igualdad de condiciones: pesos de clase, GridSearch y CV anidada para cada uno, importancia por permutación y errores por segmento (7.3–7.4). Figuras 6–7 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/03_comparacion_equitativa.ipynb) |
+| `notebooks/04_busqueda_hiperparametros.ipynb` | Compara los tres buscadores de hiperparámetros del curso (Grid, Random y Optuna-TPE) con el mismo presupuesto y los mismos pliegues para Random Forest y Gradient Boosting (7.3). Figura 8 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/04_busqueda_hiperparametros.ipynb) |
 
 En Colab basta con *Entorno de ejecución → Ejecutar todas*: el notebook clona el repositorio por sí solo.
 
@@ -29,7 +30,8 @@ jupyter lab notebooks/
 ```
 
 Todo usa la semilla `42`. Las figuras se guardan en `figuras/` y las tablas en `resultados/`. Los notebooks 01 y 02
-tardan menos de un minuto; el 03 tarda unos 7 minutos por la validación cruzada anidada de los cuatro modelos.
+tardan menos de un minuto; el 03 tarda unos 7 minutos por la validación cruzada anidada de los cuatro modelos y el 04
+unos 5 minutos.
 
 ## Estructura
 
@@ -58,7 +60,7 @@ tardan menos de un minuto; el 03 tarda unos 7 minutos por la validación cruzada
   - la desviación estándar de la validación cruzada del RF optimizado;
   - la validación cruzada anidada;
   - una tabla que compara cada cifra con la del informe. Las diferencias encontradas se explican al final del notebook 02.
-- El notebook 03 y los módulos de `src/` se agregaron después de la retroalimentación de la Segunda entrega
+- Los notebooks 03 y 04 y los módulos de `src/` se agregaron después de la retroalimentación de la Segunda entrega
   (ver la sección siguiente). Cada cambio está en su propio commit.
 
 ## Cambios después de la retroalimentación de la Segunda entrega
@@ -78,6 +80,11 @@ tardan menos de un minuto; el 03 tarda unos 7 minutos por la validación cruzada
    Forest (0,891 ± 0,011), Gradient Boosting (0,888 ± 0,007) y AdaBoost (0,880 ± 0,015) quedan parejos; el árbol queda por
    debajo (0,857 ± 0,016). La ventaja de Random Forest en la entrega se debía sobre todo al tratamiento del desbalance.
    Resultados en `resultados/tabla3_comparacion_equitativa.csv` y `resultados/importancia_permutacion.csv`.
+4. **Búsqueda de hiperparámetros con los métodos del curso (notebook 04).** Siguiendo la sesión de búsqueda de
+   hiperparámetros (semana 5), se comparan `GridSearchCV`, `RandomizedSearchCV` y Optuna (TPE) con el mismo presupuesto
+   (24 y 27 configuraciones), el mismo espacio y los mismos pliegues. Las diferencias entre buscadores (≤ 0,004) son menores
+   que la desviación entre pliegues y los tres llegan a la misma región de hiperparámetros, lo que confirma el ajuste.
+   Resultados en `resultados/tabla4_buscadores_hiperparametros.csv`. Se agrega `optuna` a `requirements.txt`.
 
 ## Uso de IA generativa
 
