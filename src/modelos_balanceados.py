@@ -1,7 +1,7 @@
 """
-Versiones de AdaBoost y Gradient Boosting que ponderan las clases como `class_weight='balanced'`.
+Versiones de AdaBoost, Gradient Boosting y XGBoost que ponderan las clases como `class_weight='balanced'`.
 
-`AdaBoostClassifier` y `GradientBoostingClassifier` de scikit-learn no tienen el parámetro
+`AdaBoostClassifier`, `GradientBoostingClassifier` y `XGBClassifier` no tienen el parámetro
 `class_weight`, pero sí aceptan `sample_weight` al entrenar. Estas subclases calculan ese peso
 dentro de `fit` con la misma fórmula que usa `class_weight='balanced'`:
 
@@ -15,6 +15,7 @@ original, así que funcionan igual con Pipeline, GridSearchCV y clone.
 
 from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier
 from sklearn.utils.class_weight import compute_sample_weight
+from xgboost import XGBClassifier
 
 
 class AdaBoostBalanceado(AdaBoostClassifier):
@@ -29,3 +30,10 @@ class GradientBoostingBalanceado(GradientBoostingClassifier):
 
     def fit(self, X, y, sample_weight=None, monitor=None):
         return super().fit(X, y, sample_weight=compute_sample_weight("balanced", y), monitor=monitor)
+
+
+class XGBoostBalanceado(XGBClassifier):
+    """XGBClassifier con pesos de clase balanceados (mismo esquema que las clases anteriores)."""
+
+    def fit(self, X, y, sample_weight=None, **kwargs):
+        return super().fit(X, y, sample_weight=compute_sample_weight("balanced", y), verbose=False)

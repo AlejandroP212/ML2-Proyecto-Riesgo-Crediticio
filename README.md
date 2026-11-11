@@ -13,7 +13,7 @@ calibrada con la informalidad laboral del DANE (≈54,5 %) y una tasa de mora de
 |---|---|---|
 | `notebooks/01_simulacion_y_verificacion.ipynb` | Construye la simulación paso a paso (código completo y justificación de cada distribución y parámetro), verifica que el dataset sea idéntico al de la entrega y que reproduzca la estructura prevista (7.1). Figuras 1–2 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/01_simulacion_y_verificacion.ipynb) |
 | `notebooks/02_modelamiento_y_validacion.ipynb` | Pipeline sin fuga, comparación de modelos supervisados, GridSearch, CV anidada y comparación con el informe (7.2–7.4). Figuras 3–5 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/02_modelamiento_y_validacion.ipynb) |
-| `notebooks/03_comparacion_equitativa.ipynb` | Compara todos los modelos supervisados en igualdad de condiciones: pesos de clase, GridSearch y CV anidada para cada uno, importancia por permutación y errores por segmento (7.3–7.4). Figuras 6–7 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/03_comparacion_equitativa.ipynb) |
+| `notebooks/03_comparacion_equitativa.ipynb` | Compara los nueve modelos del artículo en igualdad de condiciones: pesos de clase, GridSearch y CV anidada para cada uno, importancia por permutación y errores por segmento (7.3–7.4 y 8.1). Figuras 6, 7 y 9 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/03_comparacion_equitativa.ipynb) |
 | `notebooks/04_busqueda_hiperparametros.ipynb` | Compara los tres buscadores de hiperparámetros del curso (Grid, Random y Optuna-TPE) con el mismo presupuesto y los mismos pliegues para Random Forest y Gradient Boosting (7.3). Figura 8 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/04_busqueda_hiperparametros.ipynb) |
 
 En Colab basta con *Entorno de ejecución → Ejecutar todas*: el notebook clona el repositorio por sí solo.
@@ -90,6 +90,13 @@ unos 5 minutos.
    Optuna queda listo para la entrega final, donde modelos con más hiperparámetros (XGBoost, LightGBM) harían inviable
    una rejilla completa.
    Resultados en `resultados/tabla4_buscadores_hiperparametros.csv`. Se agrega `optuna` a `requirements.txt`.
+5. **Comparación con los nueve modelos del artículo (notebook 03, Entrega final 8.1).** Se agregan Regresión
+   Logística, Naïve Bayes, SVM, XGBoost y LightGBM, con las mismas condiciones (pesos de clase, GridSearch y CV anidada
+   con los mismos pliegues). Siete de los nueve modelos quedan empatados (0,880–0,892 de balanced accuracy en CV anidada,
+   diferencias menores que la variación entre pliegues; Figura 9); el árbol (0,857) y Naïve Bayes (0,784) quedan por
+   debajo, como en el artículo. La Regresión Logística obtiene la mejor media (0,892 ± 0,008): la mora se simuló con un
+   logit, así que un modelo lineal tiene la forma correcta y los ensambles no tienen no linealidades que aprovechar.
+   Se agregan `xgboost` y `lightgbm` a `requirements.txt`.
 
 ## Uso de IA generativa
 
