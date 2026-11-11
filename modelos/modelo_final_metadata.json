@@ -1,0 +1,125 @@
+{
+  "modelo": "Regresión Logística (class_weight='balanced') en Pipeline: SimpleImputer(median) -> StandardScaler",
+  "hiperparametros": {
+    "C": 0.1,
+    "max_iter": 2000
+  },
+  "orden_variables": [
+    "edad",
+    "es_informal",
+    "antiguedad_laboral",
+    "ingreso_smmlv",
+    "monto_credito_smmlv",
+    "plazo_meses",
+    "creditos_activos",
+    "moras_previas",
+    "score_crediticio",
+    "relacion_cuota_ingreso"
+  ],
+  "contrato_entrada": {
+    "edad": {
+      "min": 18.0,
+      "max": 69.0,
+      "mediana": 44.0,
+      "entero": true
+    },
+    "es_informal": {
+      "min": 0.0,
+      "max": 1.0,
+      "mediana": 1.0,
+      "entero": true,
+      "valores": [
+        0,
+        1
+      ]
+    },
+    "antiguedad_laboral": {
+      "min": 0.0,
+      "max": 38.9,
+      "mediana": 2.1,
+      "entero": false
+    },
+    "ingreso_smmlv": {
+      "min": 0.31,
+      "max": 16.86,
+      "mediana": 2.17,
+      "entero": false
+    },
+    "monto_credito_smmlv": {
+      "min": 0.22,
+      "max": 45.75,
+      "mediana": 4.0,
+      "entero": false
+    },
+    "plazo_meses": {
+      "min": 12.0,
+      "max": 60.0,
+      "mediana": 36.0,
+      "entero": true,
+      "valores": [
+        12,
+        24,
+        36,
+        48,
+        60
+      ]
+    },
+    "creditos_activos": {
+      "min": 0.0,
+      "max": 8.0,
+      "mediana": 1.0,
+      "entero": true
+    },
+    "moras_previas": {
+      "min": 0.0,
+      "max": 6.0,
+      "mediana": 0.0,
+      "entero": true
+    },
+    "score_crediticio": {
+      "min": 340.0,
+      "max": 850.0,
+      "mediana": 626.0,
+      "entero": true
+    },
+    "relacion_cuota_ingreso": {
+      "min": 0.002,
+      "max": 1.458,
+      "mediana": 0.068,
+      "entero": false
+    }
+  },
+  "variable_derivada": {
+    "relacion_cuota_ingreso": "((monto_credito_smmlv / plazo_meses) * 1.2) / max(ingreso_smmlv, 0.5), redondeada a 3 decimales"
+  },
+  "umbral_decision": 0.44,
+  "umbral_decision_probabilidad_corregida": 0.068025,
+  "prior_mora_entrenamiento": 0.085,
+  "metricas": {
+    "cv_anidada_balanced_accuracy": 0.8924,
+    "cv5_balanced_accuracy": 0.8977915045290359,
+    "prueba": {
+      "Balanced accuracy": 0.8974,
+      "Accuracy": 0.8692,
+      "Recall": 0.9314,
+      "Precisión": 0.3878,
+      "F1": 0.5476,
+      "ROC-AUC": 0.9628,
+      "Morosos detectados": "95 de 102",
+      "Falsas alarmas": 150.0
+    }
+  },
+  "versiones": {
+    "python": "3.13.17",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6"
+  },
+  "semilla": 42,
+  "limitaciones": [
+    "Entrenado con datos simulados (6.000 solicitantes); no usar para decisiones reales sin validación con datos reales.",
+    "La mora se simuló con un logit, lo que favorece a un modelo lineal.",
+    "La mora del segmento formal es casi nula en la simulación: el modelo casi no rechaza formales y concentra las falsas alarmas en informales.",
+    "La explicación por contribuciones describe el modelo, no relaciones causales."
+  ]
+}

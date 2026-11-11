@@ -1,0 +1,18 @@
+{
+  "entrada": {
+    "edad": 27.0,
+    "es_informal": 1.0,
+    "antiguedad_laboral": 1.9,
+    "ingreso_smmlv": 1.92,
+    "monto_credito_smmlv": 2.57,
+    "plazo_meses": 60.0,
+    "creditos_activos": 2.0,
+    "moras_previas": 0.0,
+    "score_crediticio": 490.0,
+    "relacion_cuota_ingreso": 0.027
+  },
+  "probabilidad_modelo": 0.32481900473235686,
+  "probabilidad_corregida": 0.042779060630766017,
+  "decision": "Aprobar",
+  "tolerancia": 1e-06
+}

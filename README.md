@@ -15,6 +15,7 @@ calibrada con la informalidad laboral del DANE (≈54,5 %) y una tasa de mora de
 | `notebooks/02_modelamiento_y_validacion.ipynb` | Pipeline sin fuga, comparación de modelos supervisados, GridSearch, CV anidada y comparación con el informe (7.2–7.4). Figuras 3–5 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/02_modelamiento_y_validacion.ipynb) |
 | `notebooks/03_comparacion_equitativa.ipynb` | Compara los nueve modelos del artículo en igualdad de condiciones: pesos de clase, GridSearch y CV anidada para cada uno, importancia por permutación y errores por segmento (7.3–7.4 y 8.1). Figuras 6, 7 y 9 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/03_comparacion_equitativa.ipynb) |
 | `notebooks/04_busqueda_hiperparametros.ipynb` | Compara los tres buscadores de hiperparámetros del curso (Grid, Random y Optuna-TPE) con el mismo presupuesto y los mismos pliegues para Random Forest y Gradient Boosting (7.3). Figura 8 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/04_busqueda_hiperparametros.ipynb) |
+| `notebooks/05_modelo_final.ipynb` | Modelo final (Regresión Logística): selección justificada, curva de validación, umbral elegido sin usar la prueba, evaluación única en prueba, contraste con el artículo y artefactos para el despliegue (8.1). Figuras 10–12 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/05_modelo_final.ipynb) |
 
 En Colab basta con *Entorno de ejecución → Ejecutar todas*: el notebook clona el repositorio por sí solo.
 
@@ -30,8 +31,8 @@ jupyter lab notebooks/
 ```
 
 Todo usa la semilla `42`. Las figuras se guardan en `figuras/` y las tablas en `resultados/`. Los notebooks 01 y 02
-tardan menos de un minuto; el 03 tarda unos 7 minutos por la validación cruzada anidada de los cuatro modelos y el 04
-unos 5 minutos.
+tardan menos de un minuto; el 03 tarda unos 7 minutos por la validación cruzada anidada de los nueve modelos, el 04
+unos 5 minutos y el 05 menos de un minuto. El notebook 05 usa la tabla que genera el 03.
 
 ## Estructura
 
@@ -41,6 +42,7 @@ unos 5 minutos.
 │   ├── entrega_1/             Informe de la Primera entrega (.docx)
 │   └── entrega_2/             Informe PDF, notebook, generador, dataset y figuras de la Segunda entrega
 ├── src/                       simulacion_credito.py (simulación documentada) y modelos_balanceados.py
+├── modelos/                   Modelo final entrenado (.joblib), su contrato de entrada y una predicción de referencia
 ├── notebooks/                 Notebooks reproducibles (creados después de la entrega, ver abajo)
 ├── data/                      Dataset regenerado por el notebook 01
 ├── figuras/  resultados/      Salidas de los notebooks
@@ -97,6 +99,12 @@ unos 5 minutos.
    debajo, como en el artículo. La Regresión Logística obtiene la mejor media (0,892 ± 0,008): la mora se simuló con un
    logit, así que un modelo lineal tiene la forma correcta y los ensambles no tienen no linealidades que aprovechar.
    Se agregan `xgboost` y `lightgbm` a `requirements.txt`.
+6. **Modelo final (notebook 05, Entrega final 8.1).** Se elige la **Regresión Logística** (`C = 0,1`,
+   `class_weight='balanced'`): mayor balanced accuracy en CV anidada entre siete modelos empatados y el más interpretable
+   (regla de parsimonia). Su desempeño es estable frente a C (curva de validación) y el umbral de decisión (0,44) se
+   eligió con predicciones *out-of-fold* del entrenamiento, sin usar la prueba. En prueba: balanced accuracy 0,897,
+   95 de 102 morosos detectados, ROC-AUC 0,963. Se contrasta con el artículo (`resultados/tabla6_contraste_articulo.csv`)
+   y se guardan los artefactos para el despliegue en `modelos/`, con verificación de que el modelo cargado predice igual.
 
 ## Uso de IA generativa
 
