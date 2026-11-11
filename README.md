@@ -36,6 +36,30 @@ tardan menos de un minuto; el 03 tarda unos 7 minutos por la validación cruzada
 unos 5 minutos, y el 05 y el 06 menos de un minuto cada uno. El 05 usa la tabla que genera el 03, y el 06 usa el
 modelo guardado por el 05.
 
+## Aplicación (despliegue básico, Entrega final 8.3)
+
+La aplicación en Streamlit recibe los datos de un solicitante, aplica el mismo Pipeline del entrenamiento, devuelve la
+probabilidad estimada de mora y la decisión del modelo, y explica qué variables pesan en ese resultado.
+
+```bash
+pip install -r requirements.txt
+python src/despliegue.py          # verificación de coherencia entre entrenamiento y uso
+streamlit run app/app.py          # abre la aplicación en http://localhost:8501
+```
+
+Ambos comandos se ejecutan desde la raíz del repositorio. La aplicación usa los artefactos de `modelos/` (generados por el
+notebook 05) y la lógica de `src/despliegue.py`, que comparte con la verificación:
+
+| Qué hace | Cómo garantiza la coherencia con el entrenamiento |
+|---|---|
+| Construye la fila de entrada | Mismo orden de variables y misma fórmula de `relacion_cuota_ingreso` que la simulación |
+| Datos faltantes | Si el usuario marca "no disponible", el Pipeline imputa la mediana del entrenamiento, como en el modelamiento |
+| Valida las entradas | Avisa cuando un valor está fuera del rango visto en el entrenamiento (contrato de entrada) |
+| Probabilidad | Corregida por la tasa real de mora (8,5 %), porque el modelo se entrenó con pesos balanceados |
+| Decisión | Umbral elegido en validación cruzada (notebook 05); marca los casos límite para revisión humana |
+| Explicación | Contribución de cada variable, idéntica a los valores SHAP del modelo |
+| Al iniciar | Comprueba que el modelo reproduce la predicción de referencia y que la versión de scikit-learn coincide |
+
 ## Estructura
 
 ```
@@ -43,8 +67,9 @@ modelo guardado por el 05.
 ├── entregas/                  ARCHIVOS ORIGINALES, sin modificar
 │   ├── entrega_1/             Informe de la Primera entrega (.docx)
 │   └── entrega_2/             Informe PDF, notebook, generador, dataset y figuras de la Segunda entrega
-├── src/                       simulacion_credito.py (simulación documentada) y modelos_balanceados.py
+├── src/                       simulacion_credito.py, modelos_balanceados.py y despliegue.py (lógica de la app)
 ├── modelos/                   Modelo final entrenado (.joblib), su contrato de entrada y una predicción de referencia
+├── app/                       Aplicación de Streamlit (app.py)
 ├── notebooks/                 Notebooks reproducibles (creados después de la entrega, ver abajo)
 ├── data/                      Dataset regenerado por el notebook 01
 ├── figuras/  resultados/      Salidas de los notebooks
@@ -113,6 +138,10 @@ modelo guardado por el 05.
    variables de control no tienen efecto. El modelo recupera la estructura de la simulación (coeficientes proporcionales
    a los simulados). Las 150 falsas alarmas son informales que pagan, con un perfil casi igual al de los morosos.
    Se agrega `shap` a `requirements.txt`.
+8. **Aplicación en Streamlit (`app/`, Entrega final 8.3).** Recibe los datos del solicitante, predice con el Pipeline
+   guardado, muestra la probabilidad estimada de mora y la decisión, avisa sobre datos faltantes o fuera de rango, marca
+   los casos límite y explica la predicción con contribuciones equivalentes a SHAP. `src/despliegue.py` concentra la lógica
+   compartida y una verificación de coherencia (`python src/despliegue.py`). Se agrega `streamlit` a `requirements.txt`.
 
 ## Uso de IA generativa
 

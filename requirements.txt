@@ -9,3 +9,4 @@ optuna==5.0.0
 xgboost==3.4.1
 lightgbm==4.7.0
 shap==0.54.1
+streamlit==1.66.1
