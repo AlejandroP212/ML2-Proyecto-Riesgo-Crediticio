@@ -1,0 +1,11 @@
+,|SHAP| medio (log-odds)
+Score crediticio,1.691
+Moras previas,1.204
+Empleo informal,1.165
+Antigüedad laboral (años),1.06
+Ingreso (SMMLV),0.476
+Relación cuota/ingreso,0.383
+Plazo (meses),0.103
+Monto del crédito (SMMLV),0.072
+Créditos activos,0.041
+Edad,0.02

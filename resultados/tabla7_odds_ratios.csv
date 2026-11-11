@@ -1,0 +1,11 @@
+,Variable,OR por 1 desv. est.,IC 95 % inferior,IC 95 % superior,Desv. est. de la variable,OR por unidad natural,Coef. por unidad (modelo),Coef. en la simulación,Cruza 1
+score_crediticio,Score crediticio,0.1283,0.098,0.1586,83.0333,0.9756,-0.0247,-0.007,False
+antiguedad_laboral,Antigüedad laboral (años),0.2097,0.1439,0.2932,4.2891,0.6948,-0.3642,-0.1,False
+ingreso_smmlv,Ingreso (SMMLV),0.5358,0.3881,0.7129,1.611,0.6788,-0.3874,-0.12,False
+plazo_meses,Plazo (meses),0.8858,0.696,1.1289,17.0576,0.9929,-0.0071,0.0,True
+creditos_activos,Créditos activos,0.9504,0.8225,1.1036,1.1752,0.9576,-0.0433,0.0,True
+edad,Edad,1.024,0.8637,1.1975,14.9243,1.0016,0.0016,0.0,True
+monto_credito_smmlv,Monto del crédito (SMMLV),1.1045,0.8909,1.3384,3.7118,1.0271,0.0268,0.0,True
+relacion_cuota_ingreso,Relación cuota/ingreso,1.7594,1.4775,2.1502,0.1421,53.2595,3.9752,1.3,False
+es_informal,Empleo informal,3.242,2.7719,3.8125,0.4959,10.7158,2.3717,0.8,False
+moras_previas,Moras previas,4.1025,3.6766,4.871,0.7647,6.3348,1.8461,0.5,False

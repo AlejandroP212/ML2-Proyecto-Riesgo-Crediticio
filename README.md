@@ -16,6 +16,7 @@ calibrada con la informalidad laboral del DANE (≈54,5 %) y una tasa de mora de
 | `notebooks/03_comparacion_equitativa.ipynb` | Compara los nueve modelos del artículo en igualdad de condiciones: pesos de clase, GridSearch y CV anidada para cada uno, importancia por permutación y errores por segmento (7.3–7.4 y 8.1). Figuras 6, 7 y 9 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/03_comparacion_equitativa.ipynb) |
 | `notebooks/04_busqueda_hiperparametros.ipynb` | Compara los tres buscadores de hiperparámetros del curso (Grid, Random y Optuna-TPE) con el mismo presupuesto y los mismos pliegues para Random Forest y Gradient Boosting (7.3). Figura 8 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/04_busqueda_hiperparametros.ipynb) |
 | `notebooks/05_modelo_final.ipynb` | Modelo final (Regresión Logística): selección justificada, curva de validación, umbral elegido sin usar la prueba, evaluación única en prueba, contraste con el artículo y artefactos para el despliegue (8.1). Figuras 10–12 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/05_modelo_final.ipynb) |
+| `notebooks/06_interpretacion.ipynb` | Interpretación del modelo final: coeficientes como odds ratios con intervalos bootstrap, SHAP global y local, dependencia parcial e ICE, y perfil de los errores con sus implicaciones (8.2). Figuras 13–17 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AlejandroP212/ML2-Proyecto-Riesgo-Crediticio/blob/main/notebooks/06_interpretacion.ipynb) |
 
 En Colab basta con *Entorno de ejecución → Ejecutar todas*: el notebook clona el repositorio por sí solo.
 
@@ -32,7 +33,8 @@ jupyter lab notebooks/
 
 Todo usa la semilla `42`. Las figuras se guardan en `figuras/` y las tablas en `resultados/`. Los notebooks 01 y 02
 tardan menos de un minuto; el 03 tarda unos 7 minutos por la validación cruzada anidada de los nueve modelos, el 04
-unos 5 minutos y el 05 menos de un minuto. El notebook 05 usa la tabla que genera el 03.
+unos 5 minutos, y el 05 y el 06 menos de un minuto cada uno. El 05 usa la tabla que genera el 03, y el 06 usa el
+modelo guardado por el 05.
 
 ## Estructura
 
@@ -105,6 +107,12 @@ unos 5 minutos y el 05 menos de un minuto. El notebook 05 usa la tabla que gener
    eligió con predicciones *out-of-fold* del entrenamiento, sin usar la prueba. En prueba: balanced accuracy 0,897,
    95 de 102 morosos detectados, ROC-AUC 0,963. Se contrasta con el artículo (`resultados/tabla6_contraste_articulo.csv`)
    y se guardan los artefactos para el despliegue en `modelos/`, con verificación de que el modelo cargado predice igual.
+7. **Interpretación (notebook 06, Entrega final 8.2).** Coeficientes como odds ratios con intervalos bootstrap, SHAP
+   global y local (exacto para un modelo lineal), dependencia parcial e ICE, y perfil de los errores. Las moras previas,
+   la informalidad y la relación cuota/ingreso suben el riesgo; el score, la antigüedad y el ingreso lo bajan; las
+   variables de control no tienen efecto. El modelo recupera la estructura de la simulación (coeficientes proporcionales
+   a los simulados). Las 150 falsas alarmas son informales que pagan, con un perfil casi igual al de los morosos.
+   Se agrega `shap` a `requirements.txt`.
 
 ## Uso de IA generativa
 

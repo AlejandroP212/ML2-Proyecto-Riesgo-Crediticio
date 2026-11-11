@@ -1,0 +1,5 @@
+Grupo,Solicitantes,Informales,Score,Moras,Antigüedad,Ingreso,Cuota_ingreso,Prob_estimada
+Moroso detectado (VP),95,1.0,537.713,1.558,1.415,1.445,0.347,0.546
+Moroso no detectado (FN),7,0.857,544.0,0.714,2.1,1.626,0.122,0.037
+Falsa alarma (FP),150,1.0,542.866,1.1,1.66,1.818,0.16,0.227
+Bien aprobado (VN),948,0.454,651.775,0.335,4.223,2.927,0.095,0.007
